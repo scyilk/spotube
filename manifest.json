@@ -9,16 +9,23 @@
         "48": "icons/48.png",
         "128": "icons/128.png"
     },
-    "content_scripts": [
+    "background": {
+        "service_worker": "scripts/sw_spotify.js",
+        "type": "module"
+    },
+    "web_accessible_resources": [
         {
-            "js": [
+            "resources": [
                 "scripts/spotify.js"
             ],
             "matches": [
-                "https://open.spotify.com/playlist/*",
-                "https://open.spotify.com/album/*",
-                "https://open.spotify.com/track/*"
+                "*://open.spotify.com/*"
             ]
         }
+    ],
+    "permissions": [
+        "*://open.spotify.com*",
+        "tabs",
+        "webNavigation"
     ]
 }
